@@ -115,7 +115,8 @@ require([
         popupTemplate:pop
     });
     let gl=new GraphicsLayer({
-        graphics:[graph1,graph2,graph3]
+        graphics:[graph1,graph2,graph3],
+        title:"Jeziora"
     });
 ///////////////////////////////////////////////////////
     let map1=new Map({
@@ -150,14 +151,20 @@ require([
         position: "top-left"
     });
     let legend = new Legend({
-        view: view
+        view: view,
+        LayerInfos:[{layer:gl,
+            title:"Legenda"}]
     });
       view.ui.add(legend, "bottom-right");
-    let measurement = new Measurement({
+      let measurement = new Measurement({
         view: view,
-        activeTool: "distance"
+        activeTool: "distance", 
+      });
+      
+    view.ui.add(measurement,{
+        position:"top-right",
     });
-    view.ui.add(measurement, "top-right");
+      
     let searchWidget = new Search({
         view: view
     });
